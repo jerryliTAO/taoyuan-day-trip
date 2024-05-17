@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" initial-scale="1.0" />
+    <title>桃園一日遊|訂單內容</title>
+    <link rel="icon" href="images/trip.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="./css/components/header.css" />
+    <link rel="stylesheet" type="text/css" href="./css/components/footer.css" />
+    <link rel="stylesheet" type="text/css" href="./css/order.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <a id="title" href="/">桃園一日遊</a>
+      <div id="menu">
+        <a id="order" href="./order">我的訂單</a>
+        <a id="plan" href="./cart">預定行程</a>
+        <a id="login" href="/login">登入</a>
+        <a id="register" href="./register">註冊</a>
+        <a id="logout">登出</a>
+      </div>
+
+      <div id="menuMobile">
+        <a id="order" href="./order">我的訂單</a>
+        <a id="plan" href="./cart">預定行程</a>
+        <a id="login" href="/login">登入</a>
+        <a id="register" href="./register">註冊</a>
+        <a id="logout">登出</a>
+      </div>
+    </header>
+
+    <!-- to cover the header area -->
+    <div class="empty-content"></div>
+
+    <!-- Main -->
+
+    <div class="section">
+      <div class="orderInfoTitle">
+        <div><span>xxx</span> 您好，謝謝訂購紀錄如下:</div>
+      </div>
+      <div class="container">
+        <div class="orderContainer">
+          <div onclick="toggleMenu(1)" class="order">
+            <div class="orderNumber">訂單編號:<span>xxxxxx</span></div>
+            <div class="expand" id="expand_1">+</div>
+          </div>
+          <div id="testMenu_1" class="hide">
+            <div class="orderInfo">
+              <li>訂單編號:<span>11111</span></li>
+              <li>訂購日期:<span>2023-10-30</span></li>
+              <li>聯絡信箱:<span>test@gmail.com</span></li>
+              <li>手機號碼:<span>0912345678</span></li>
+              <li>訂單總額:新台幣<span>5555</span>元</li>
+            </div>
+
+            <hr />
+
+            <div class="attractionContainer">
+              <div class="bookingAttraction">
+                <div id="bookingImg">
+                  <img
+                    class="attractionImg"
+                    src="https://travel.tycg.gov.tw/image/59874/640x480"
+                  />
+                </div>
+                <div id="bookingList">
+                  <div class="attractionInfo">北投景點</div>
+                  <div class="attractionInfo">
+                    日期:
+                    <div id="date">2023-06-30</div>
+                  </div>
+                  <div class="attractionInfo">
+                    時段 :
+                    <div id="schedule">早上9點~中午12點</div>
+                  </div>
+                  <div class="attractionInfo">
+                    費用 :
+                    <div id="fee">新台幣<span>2000</span>元</div>
+                  </div>
+                  <div class="attractionInfo">
+                    地址 :
+                    <div id="address">臺北市 北投區中山路、光明路沿線</div>
+                  </div>
+                </div>
+              </div>
+
+              <!--test booking attraction-->
+              <div class="bookingAttraction">
+                <div id="bookingImg">
+                  <img
+                    class="attractionImg"
+                    src="https://travel.tycg.gov.tw/image/59874/640x480"
+                  />
+                </div>
+                <div id="bookingList">
+                  <div class="attractionInfo">北投景點</div>
+                  <div class="attractionInfo">
+                    日期:
+                    <div id="date">2023-06-30</div>
+                  </div>
+                  <div class="attractionInfo">
+                    時段 :
+                    <div id="schedule">早上9點~中午12點</div>
+                  </div>
+                  <div class="attractionInfo">
+                    費用 :
+                    <div id="fee">新台幣<span>2000</span>元</div>
+                  </div>
+                  <div class="attractionInfo">
+                    地址 :
+                    <div id="address">臺北市 北投區中山路、光明路沿線</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bookingAttraction">
+                <div id="bookingImg">
+                  <img
+                    class="attractionImg"
+                    src="https://travel.tycg.gov.tw/image/59874/640x480"
+                  />
+                </div>
+                <div id="bookingList">
+                  <div class="attractionInfo">北投景點</div>
+                  <div class="attractionInfo">
+                    日期:
+                    <div id="date">2023-06-30</div>
+                  </div>
+                  <div class="attractionInfo">
+                    時段 :
+                    <div id="schedule">早上9點~中午12點</div>
+                  </div>
+                  <div class="attractionInfo">
+                    費用 :
+                    <div id="fee">新台幣<span>2000</span>元</div>
+                  </div>
+                  <div class="attractionInfo">
+                    地址 :
+                    <div id="address">臺北市 北投區中山路、光明路沿線</div>
+                  </div>
+                </div>
+              </div>
+              <!---->
+            </div>
+          </div>
+        </div>
+
+        <div class="orderContainer">
+          <div onclick="toggleMenu(2)" class="order">
+            <div class="orderNumber">訂單編號:<span>xxxxxx</span></div>
+            <div class="expand" id="expand_2">+</div>
+          </div>
+          <div id="testMenu_2" class="hide">
+            <div class="orderInfo">
+              <li>訂單編號:<span>11111</span></li>
+              <li>訂購日期:<span>2023-10-30</span></li>
+              <li>聯絡信箱:<span>test@gmail.com</span></li>
+              <li>手機號碼:<span>0912345678</span></li>
+              <li>訂單總額:新台幣<span>5555</span>元</li>
+            </div>
+
+            <hr />
+
+            <div class="attractionContainer">
+              <div class="bookingAttraction">
+                <div id="bookingImg">
+                  <img
+                    class="attractionImg"
+                    src="https://travel.tycg.gov.tw/image/59874/640x480"
+                  />
+                </div>
+                <div id="bookingList">
+                  <div class="attractionInfo">北投景點</div>
+                  <div class="attractionInfo">
+                    日期:
+                    <div id="date">2023-06-30</div>
+                  </div>
+                  <div class="attractionInfo">
+                    時段 :
+                    <div id="schedule">早上9點~中午12點</div>
+                  </div>
+                  <div class="attractionInfo">
+                    費用 :
+                    <div id="fee">新台幣<span>2000</span>元</div>
+                  </div>
+                  <div class="attractionInfo">
+                    地址 :
+                    <div id="address">臺北市 北投區中山路、光明路沿線</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>COPYRIGHT © 2024 桃園一日遊</footer>
+
+    <script type="text/javascript">
+      function toggleMenu(number) {
+        // toggle the order detail
+        let menu = document.querySelector("#testMenu_" + number);
+        if (menu.style.display == "none" || menu.style.display == "") {
+          menu.style.display = "block";
+        } else {
+          menu.style.display = "none";
+        }
+
+        let expand = document.querySelector("#expand_" + number);
+        if (expand.innerHTML == "+") {
+          expand.innerHTML = "-";
+        } else {
+          expand.innerHTML = "+";
+        }
+      }
+    </script>
+  </body>
+</html>

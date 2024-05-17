@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
+
+body {
+  font-family: "Noto Sans TC";
+  height: 100vh;
+  /* margin: 0px;
+  padding: 0px; */
+  background-color: rgb(227, 222, 215);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-login {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+}
+
+#form-login-heading {
+  text-align: center;
+
+  font-size: 50px;
+  font-weight: bold;
+  width: 500px;
+}
+
+@media (max-width: 500px) {
+  #form-login-heading {
+    font-size: 32px;
+    font-weight: bold;
+    width: 250px;
+  }
+}
+
+#loginImg {
+  width: 50%;
+  height: 50%;
+}
+
+#loginBtm {
+  border-radius: 10px;
+  background-color: rgb(240, 248, 222);
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+#register {
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: rgb(19, 142, 37);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.formInput {
+  font-size: 20px;
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

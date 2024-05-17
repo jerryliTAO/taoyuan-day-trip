@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+    <title>桃園一日遊-登入</title>
+    <link rel="stylesheet" type="text/css" href="./css/login.css" />
+    <link rel="icon" href="images/trip.png" type="image/x-icon" />
+  </head>
+  <body>
+    <form id="form-login" action="./index" method="post">
+      <div id="form-login-heading">
+        <div id="login-title">桃園一日遊-帳號登入</div>
+        <img id="loginImg" src="./images/login.png" />
+      </div>
+
+      <input
+        type="text"
+        name="userName"
+        class="formInput"
+        placeholder="帳號"
+        autofocus
+      />
+
+      <input
+        type="password"
+        name="password"
+        class="formInput"
+        placeholder="密碼"
+      />
+
+      <div></div>
+      <button id="loginBtm" type="submit">登入</button>
+
+      <a id="register" href="register">建立新帳戶</a>
+    </form>
+  </body>
+</html>

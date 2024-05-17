@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
+
+body {
+  font-family: "Noto Sans TC";
+  margin: 0;
+  color: rgb(102, 102, 102);
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 100%;
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: rgb(210, 210, 210);
+  height: 2px;
+  width: 100%;
+  border: none;
+}
+
+#withoutPlan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  text-align: center;
+  height: 500px;
+  font-size: 36px;
+  color: rgb(102, 102, 102);
+
+  display: none;
+}
+
+#withPlan {
+  /* display: none; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+#bookingItem,
+#bookingInfo,
+#creditCard,
+#summary {
+  width: 90%;
+}
+
+.bookingAttraction {
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+}
+#bookingImg {
+  width: 260px;
+  height: 200px;
+  margin-right: 40px;
+}
+#bookingList {
+  width: 350px;
+  height: 200px;
+}
+
+#bookingDelete {
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  align-items: center;
+}
+#deleteIcon {
+  cursor: pointer;
+}
+
+.attractionImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+#attractionName {
+  color: rgb(37, 99, 187);
+  font-weight: bold;
+  cursor: pointer;
+}
+#attractionName:hover {
+  filter: brightness(3);
+}
+.attractionInfo {
+  font-weight: bold;
+}
+
+#remind {
+  font-weight: bold;
+}
+
+#summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#summary div {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 25px;
+  width: 30%;
+  text-align: center;
+}
+
+#pay {
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: rgb(19, 142, 37);
+  color: rgb(255, 255, 255);
+
+  cursor: pointer;
+  margin-top: 10px;
+}
+#pay:hover {
+  background-color: red;
+}
+
+.infoTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.attractionInfo,
+.cardItem,
+.contactInfo {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.contactInput,
+.tpfield {
+  width: 200px;
+  height: 38px;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  padding-left: 10px;
+}

@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
+
+body {
+  font-family: "Noto Sans TC";
+  margin: 0;
+  /* box-sizing: border-box; */
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+  /* color: #2d88dd; */
+}
+#title:hover {
+  filter: brightness(3);
+}
+
+header {
+  height: 50px;
+  width: 100%;
+
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: rgb(238, 232, 232);
+  /* border: solid rgb(209, 209, 209) 1px; */
+
+  text-align: center;
+}
+
+#title {
+  color: rgb(37, 99, 187);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  padding-left: 10%;
+}
+
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#menuMobile {
+  display: none;
+}
+
+#order,
+#plan,
+#login,
+#register,
+#logout {
+  padding: 3px;
+  width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#order:hover,
+#plan:hover,
+#login:hover,
+#register:hover,
+#logout:hover {
+  background-color: rgb(201, 201, 201);
+}
+
+#order,
+#logout {
+  display: none;
+}
+
+.empty-content {
+  height: 50px;
+}
+
+.topImage,
+#topImage {
+  width: 100%;
+  height: 350px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 300px; */
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+}
+
+.attraction {
+  position: relative;
+  width: 230px;
+  height: 150px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.attraction_img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.attraction_name {
+  background-color: hsla(0, 0%, 11%, 0.7);
+  position: absolute;
+  bottom: 0;
+  width: auto;
+  left: 20px;
+  right: 20px;
+  color: white;
+  padding: 5px;
+}
+
+.tag {
+  border: solid rgb(193, 193, 193) 1px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.test {
+  height: 300px;
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: rgb(156, 156, 156);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+  .topImage,
+  #topImage {
+    height: 170px;
+  }
+  .attraction {
+    width: 100%;
+    height: 200px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #menu {
+    display: none;
+  }
+  #menuMobile {
+    display: block;
+  }
+}
