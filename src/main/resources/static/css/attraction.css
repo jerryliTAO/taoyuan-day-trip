@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
+
+body {
+  font-family: "Noto Sans TC";
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+
+  height: 400px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#slideShowContainer {
+  width: 40%;
+  height: 100%;
+  text-align: center;
+  margin-right: 20px;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+
+  /* overflow: hidden; */
+}
+
+.prevBtn,
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.prevBtn {
+  left: 10px;
+}
+.nextBtn {
+  right: 10px;
+}
+
+.prevBtn:hover,
+.nextBtn :hover {
+  background-color: blueviolet;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+}
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 6px;
+  background-color: rgb(255, 255, 255, 0.6);
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.attractionImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  width: 40%;
+  height: 100%;
+  margin-left: 20px;
+
+  color: rgb(102, 102, 102);
+}
+
+#attraction,
+#category {
+  display: flex;
+  align-items: center;
+
+  height: 50px;
+}
+
+#attraction {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#category {
+  font-size: 24px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#bookingCard {
+  height: 100%;
+  background-color: rgb(232, 232, 232);
+  border-radius: 10px;
+  padding: 20px;
+  /* line-height: 40px; */
+}
+
+#detail {
+  font-size: 18px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+#description {
+  font-weight: normal;
+}
+
+#inputDate {
+  width: 196px;
+  height: 35px;
+  cursor: pointer;
+}
+
+#bookingSubmit {
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: rgb(19, 142, 37);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-align: center;
+
+  width: 80%;
+  cursor: pointer;
+}
+
+hr {
+  max-width: 80%;
+}
+
+article {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(102, 102, 102);
+  font-size: 20px;
+}
+
+#infoContainer,
+#mapContainer {
+  width: 80%;
+}
+
+#introduce,
+#address,
+#transport {
+  margin: 20px;
+}
+
+#infoContainer div {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#mapContainer {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+}
+#map {
+  background-color: rgb(229, 227, 223);
+  border-radius: 50px;
+  padding: 10px;
+  width: 90%;
+  height: 90%;
+}
+
+.infoTitle {
+  font-weight: bold;
+}
+
+/* ======= RWD Design ===== */
+
+@media (max-width: 800px) {
+  .section {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  #slideShowContainer {
+    width: 80%;
+    margin-right: 0px;
+  }
+  #profile {
+    width: 80%;
+    height: 100%;
+    margin-left: 0px;
+  }
+
+  #attraction,
+  #category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 40px;
+  }
+  #category {
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  #detail {
+    font-size: 16px;
+  }
+  #description {
+    font-weight: normal;
+  }
+  hr {
+    max-width: 80%;
+  }
+
+  article {
+    font-size: 16px;
+  }
+
+  #infoContainer,
+  #mapContainer {
+    width: 80%;
+  }
+
+  #infoContainer div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #mapContainer {
+    height: 200px;
+  }
+}

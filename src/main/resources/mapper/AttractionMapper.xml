@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jerryli.taoyuandaytrip.mapper.AttractionMapper">
+    <select id="getAllAttraction" resultType="jerryli.taoyuandaytrip.pojo.Attraction">
+        select * from attraction
+    </select>
+
+    <select id="getAttractionById" resultType="jerryli.taoyuandaytrip.pojo.Attraction">
+        select * from attraction where id = #{id}
+    </select>
+</mapper>
