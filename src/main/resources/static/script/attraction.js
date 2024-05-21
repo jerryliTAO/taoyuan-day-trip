@@ -76,6 +76,7 @@ async function images() {
 }
 
 
+//=======   limit order date from now on ======
 let inputDate = document.querySelector("#inputDate");
 let date = new Date();
 let year = date.getFullYear();

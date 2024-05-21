@@ -8,7 +8,7 @@
     <link rel="icon" href="images/trip.png" type="image/x-icon" />
   </head>
   <body>
-    <form id="form-login" action="./index" method="post">
+    <form id="form-login" action="./index" method="post" onsubmit="return verifyEmail()">
       <div id="form-login-heading">
         <div id="login-title">桃園一日遊-帳號登入</div>
         <img id="loginImg" src="./images/login.png" />
@@ -16,11 +16,13 @@
 
       <input
         type="text"
-        name="userName"
+        id="email"
+        name="email"
         class="formInput"
-        placeholder="帳號"
+        placeholder="Email"
         autofocus
       />
+      <span id="emailSpan" class="errorMsg">email格式錯誤</span>
 
       <input
         type="password"
@@ -34,5 +36,7 @@
 
       <a id="register" href="register">建立新帳戶</a>
     </form>
+
+  <script src="/script/login.js"></script>
   </body>
 </html>

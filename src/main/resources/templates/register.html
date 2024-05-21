@@ -10,50 +10,49 @@
   <body>
     <div id="registerForm">
       <div id="registerTitle">註冊桃園一日遊會員</div>
-      <form action="./register_success" method="post">
+      <form action="/register" method="post" onsubmit="return verifyForm()">
         <div class="inputItem">
           <div>
             <label>帳號名稱:</label>
-            <input type="text" name="userName" placeholder="請輸入帳號" />
+            <input id="account" type="text" name="account" placeholder="請輸入帳號" />
           </div>
-          <span class="errorMsg">請輸入正確格式</span>
+          <span id="accountSpan" class="errorMsg">請輸入只少六位數且不包含特殊符號</span>
         </div>
         <div class="inputItem">
           <div>
             <label>帳號密碼:</label>
-            <input type="text" name="password" placeholder="請輸入密碼" />
+            <input id="password" type="password" name="password" placeholder="請輸入密碼" />
           </div>
-          <span class="errorMsg">請輸入正確格式</span>
+          <span id="pwdSpan" class="errorMsg">請輸入6~10位數密碼，至少包含1英文、1數字</span>
         </div>
         <div class="inputItem">
           <div>
             <label>確認密碼:</label>
-            <input
-              type="text"
-              name="confirmPassword"
-              placeholder="再次入密碼"
+            <input id="confirmPassword" type="password" name="confirmPassword" placeholder="再次入密碼"
             />
           </div>
-          <span class="errorMsg">請輸入正確格式</span>
+          <span id="pwdCkSpan" class="errorMsg">兩次輸入密碼不匹配</span>
         </div>
         <div class="inputItem">
           <div>
             <label>電子郵件:</label>
-            <input type="text" name="email" placeholder="請輸入信箱" />
+            <input id="email" type="text" name="email" placeholder="請輸入信箱" />
           </div>
-          <span class="errorMsg">請輸入正確格式</span>
+          <span id="emailSpan" class="errorMsg">請輸入正確格式</span>
         </div>
         <div class="inputItem">
           <div>
             <label>驗 證 碼:</label>
             <input type="text" name="verify" placeholder="請輸入驗證碼" />
           </div>
-          <span class="errorMsg">驗證碼錯誤</span>
+          <span id="validationSpan" class="errorMsg">驗證碼錯誤</span>
         </div>
         <div id="registerBtmDiv">
           <button id="registerBtm" type="submit">註冊</button>
         </div>
       </form>
     </div>
+
+  <script src="/script/register.js"></script>
   </body>
 </html>

@@ -68,3 +68,10 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.errorMsg {
+  width: 80%;
+  font-size: 12px;
+  color: red;
+  display: none;
+}
