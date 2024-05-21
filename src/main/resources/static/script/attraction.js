@@ -3,7 +3,6 @@ window.onload = async function () {
 
     // get attraction images
     const image = await images();
-    console.log(image.length);
 
 
 //==========   Image slide ============
@@ -18,7 +17,6 @@ window.onload = async function () {
         if (index < 0) {
             index = image.length - 1;
         }
-        console.log(index);
         attractionImg.src = image[index];
     }
     // next page
