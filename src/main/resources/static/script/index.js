@@ -13,7 +13,6 @@ window.onload = function () {
                     }
                 ).then(function (value) {
                     vue.attractionList = value.data;
-                    console.log(value.data)
                 })
                     .catch(function (reason) {
                             console.log(reason)
