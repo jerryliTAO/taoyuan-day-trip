@@ -1,115 +1,123 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" initial-scale="1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width" initial-scale="1.0"/>
     <title>桃園一日遊|</title>
-    <link rel="icon" href="images/trip.png" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
-    <link rel="stylesheet" type="text/css" href="/css/components/footer.css" />
-    <link rel="stylesheet" type="text/css" href="/css/attraction.css" />
-  </head>
-  <body>
+    <link rel="icon" href="images/trip.png" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/components/footer.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/attraction.css"/>
+</head>
+<body>
 
-    <header>
-      <a id="title" href="/">桃園一日遊</a>
-      <div id="menu">
+<header>
+    <a id="title" href="/">桃園一日遊</a>
+    <div id="menu">
         <a id="order" href="./order">我的訂單</a>
         <a id="plan" href="./cart">預定行程</a>
         <a id="login" href="/login">登入</a>
         <a id="register" href="./register">註冊</a>
         <a id="logout">登出</a>
-      </div>
+    </div>
 
-      <div id="menuMobile">
+    <div id="menuMobile">
         <a id="order" href="./order">我的訂單</a>
         <a id="plan" href="./cart">預定行程</a>
         <a id="login" href="/login">登入</a>
         <a id="register" href="./register">註冊</a>
         <a id="logout">登出</a>
-      </div>
-    </header>
-    <div class="empty-content"></div>
+    </div>
+</header>
+<div class="empty-content"></div>
 
-    <div class="container">
+<div class="container">
     <main>
-      <div class="section">
-        <div id="slideShowContainer" >
-          <div class="prevBtn">
-            <img src="/images/btn_leftArrow.png" />
-          </div>
-          <div class="nextBtn"><img src="/images/btn_rightArrow.png" /></div>
-          <div class="dots">
-            <span class="dot"></span>
-          </div>
+        <div class="section">
+            <div id="slideShowContainer">
+                <div class="prevBtn">
+                    <img src="/images/btn_leftArrow.png"/>
+                </div>
+                <div class="nextBtn"><img src="/images/btn_rightArrow.png"/></div>
+                <div class="dots">
+                    <span class="dot"></span>
+                </div>
 
-<!--          https://travel.tycg.gov.tw/image/59874/640x480-->
-          <img
-            class="attractionImg"
-            v-if="attraction.image"
-            v-bind:src="attraction.image"
-          />
+                <!--          https://travel.tycg.gov.tw/image/59874/640x480-->
+                <div id="imageContainer">
+                    <img
+                            class="attractionImg"
+                            v-if="attraction.image"
+                            v-bind:src="attraction.image[0]"
+                    />
+                </div>
+
+            </div>
+            <div id="profile">
+                <div id="attraction">{{attraction.name}}</div>
+                <div id="category">
+                    <div class="categoryDetail" v-for="category in attraction.category">
+                        {{category}}
+                    </div>
+                </div>
+                <div id="bookingCard">
+                    <form id="detail" action="/booking" method="post">
+                        <div id="subtitle">訂購導覽行程</div>
+                        <div id="describe">
+                            以此景點為中心，帶您探索城市角落的一日行程
+                        </div>
+                        <div id="date">
+                            <span>選擇日期 : </span>
+                            <input id="inputDate" type="date" name="date"/>
+                        </div>
+                        <div id="schedule">
+                            <span>選擇時段 : </span>
+                            <input type="radio" name="radio" value="morning"/>
+                            <span>上半天</span>
+                            <input type="radio" name="radio" value="afternoon"/>
+                            <span>下半天</span>
+                        </div>
+                        <div>
+                            <span>導覽費用 : 新台幣</span>
+                            <span id="fee">2000</span>
+                            <span>元</span>
+                        </div>
+                        <input id="bookingSubmit" type="submit" value="開始預約行程"/>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div id="profile">
-          <div id="attraction">{{attraction.name}}</div>
-          <div id="category">{{attraction.category}}</div>
-          <div id="bookingCard">
-            <form id="detail" action="/booking" method="post">
-              <div id="subtitle">訂購導覽行程</div>
-              <div id="description">
-                以此景點為中心，帶您探索城市角落的一日行程
-              </div>
-              <div id="date">
-                <span>選擇日期 : </span>
-                <input id="inputDate" type="date" name="date" />
-              </div>
-              <div id="schedule">
-                <span>選擇時段 : </span>
-                <input type="radio" name="radio" value="morning" />
-                <span>上半天</span>
-                <input type="radio" name="radio" value="afternoon" />
-                <span>下半天</span>
-              </div>
-              <div>
-                <span>導覽費用 : 新台幣</span>
-                <span id="fee">2000</span>
-                <span>元</span>
-              </div>
-              <input id="bookingSubmit" type="submit" value="開始預約行程" />
-            </form>
-          </div>
-        </div>
-      </div>
-      <hr />
+        <hr/>
     </main>
 
     <article>
-      <div id="infoContainer">
-        <div id="introduce">
-          {{attraction.description}}
-        <div id="address">
-          <span class="infoTitle">景點地址 : </span>
-          <br />
-          <span>{{attraction.address}}</span>
-        </div>
-        <div id="transport">
-          <span class="infoTitle">開放時間 : </span>
-          <br />
-          <span>{{attraction.openTime}}</span
-          >
-        </div>
-      </div>
-      <div id="mapContainer">
-        <div id="map">123</div>
-      </div>
+        <div id="infoContainer">
+            <div id="introduce">
+                <div id="description">
+                    {{attraction.description}}
+                </div>
+                <div id="address">
+                    <span class="infoTitle">景點地址 : </span>
+                    <br/>
+                    <span>{{attraction.address}}</span>
+                </div>
+                <div id="openTime">
+                    <span class="infoTitle">開放時間 : </span>
+                    <br/>
+                    <span>{{attraction.openTime}}</span>
+                </div>
+            </div>
+            <div id="mapContainer">
+                <div id="map">123</div>
+            </div>
     </article>
-    </div>
-    <footer>COPYRIGHT © 2024 桃園一日遊</footer>
+</div>
+<footer>COPYRIGHT © 2024 桃園一日遊</footer>
 
-    <!-- set tomorrow as the min date for the trip -->
+<!-- set tomorrow as the min date for the trip -->
 
-    <script src="/script/vue.js"></script>
-    <script src="/script/axios.min.js"></script>
-    <script src="/script/attraction.js"></script>
-  </body>
+<script src="/script/vue.js"></script>
+<script src="/script/axios.min.js"></script>
+<script src="/script/attraction.js"></script>
+</body>
 </html>

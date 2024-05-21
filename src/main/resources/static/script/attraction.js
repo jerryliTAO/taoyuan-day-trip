@@ -1,4 +1,41 @@
-window.onload = function () {
+window.onload = async function () {
+    getAttractionById();
+
+    // get attraction images
+    const image = await images();
+    console.log(image.length);
+
+
+//==========   Image slide ============
+    // image index;
+    let index = 0;
+    let attractionImg = document.querySelector(".attractionImg");
+
+    // previous page
+    let prevBtn = document.querySelector(".prevBtn");
+    prevBtn.onclick = () => {
+        index--;
+        if (index < 0) {
+            index = image.length - 1;
+        }
+        console.log(index);
+        attractionImg.src = image[index];
+    }
+    // next page
+
+    let nextBtn = document.querySelector(".nextBtn");
+    nextBtn.onclick = () => {
+        index++;
+        if (index > (image.length - 1)) {
+            index = 0;
+        }
+        console.log(index);
+        attractionImg.src = image[index];
+    }
+};
+
+
+let getAttractionById = function () {
     let vue = new Vue({
         el: ".container",
         data: {
@@ -10,10 +47,9 @@ window.onload = function () {
                         "method": "GET",
                         "url": "/api" + location.pathname
                     }
-                ).then(function (value) {
+                ).then((value) => {
                     vue.attraction = value.data;
-                    console.log(vue.attraction.name);
-                }).catch(function (reason) {
+                }).catch((reason) => {
                     console.log(reason)
                 })
             }
@@ -24,6 +60,20 @@ window.onload = function () {
 
     });
 };
+
+async function images() {
+    const images = await axios({
+            "method": "GET",
+            "url": "/api" + location.pathname
+        }
+    ).then(function (value) {
+        return value.data.image
+
+    }).catch(function (reason) {
+        console.log(reason)
+    })
+    return images;
+}
 
 
 let inputDate = document.querySelector("#inputDate");
