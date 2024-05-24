@@ -23,6 +23,8 @@ window.onload = function () {
             this.getAllAttraction();
         }
     });
+
+    console.log(document.cookie)
 };
 
 
