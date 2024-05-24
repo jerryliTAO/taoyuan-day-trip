@@ -21,10 +21,10 @@ public class RegisterServiceImpl implements RegisterService {
         User userByAccount = registerMapper.getUserByAccount(user.getAccount());
         User userByEmail = registerMapper.getUserByEmail(user.getEmail());
 
-        if(userByAccount==null){
+        if(userByAccount!=null){
             return "此帳號已有人使用";
         }
-        if(userByEmail==null){
+        if(userByEmail!=null){
             return "此信箱已有人使用";
         }
         return "ok";
