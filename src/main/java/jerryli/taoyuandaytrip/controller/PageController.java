@@ -18,42 +18,34 @@ import java.net.http.HttpRequest;
 @Controller
 public class PageController {
 
-    @GetMapping({"/","index"})
-    public String getIndex(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String name = authentication.getName();
-        Object credentials = authentication.getCredentials();
-        Object principal = authentication.getPrincipal();
-        Object details = authentication.getDetails();
-        System.out.println(name);
-        System.out.println(credentials);
-        System.out.println(principal);
-        System.out.println(details);
-
-        return"index";
+    @GetMapping({"/", "index"})
+    public String getIndex() {
+             return "index";
     }
 
     @GetMapping("/login")
-    public String getLogin(){
-        return"login";
+    public String getLogin() {
+        return "login";
     }
 
-    @GetMapping({"/attraction","/attraction/{id}"})
-    public String getAttraction(){
-        return"attraction";
+    @GetMapping({"/attraction", "/attraction/{id}"})
+    public String getAttraction() {
+        return "attraction";
     }
 
     @GetMapping("/cart")
-    public String getCart(){
-        return"cart";
+    public String getCart() {
+        return "cart";
     }
+
     @GetMapping("/register")
-    public String getRegister(){
-        return"register";
+    public String getRegister() {
+        return "register";
     }
+
     @GetMapping("/order")
-    public String getOrder(){
-        return"order";
+    public String getOrder() {
+        return "order";
     }
 
 }

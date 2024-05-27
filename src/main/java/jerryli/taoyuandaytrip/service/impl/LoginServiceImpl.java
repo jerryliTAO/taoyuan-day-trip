@@ -1,17 +1,26 @@
 package jerryli.taoyuandaytrip.service.impl;
 
 import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jerryli.taoyuandaytrip.mapper.UserMapper;
 import jerryli.taoyuandaytrip.pojo.LoginRequest;
 import jerryli.taoyuandaytrip.pojo.LoginResponse;
 import jerryli.taoyuandaytrip.pojo.User;
 import jerryli.taoyuandaytrip.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextHolderFilter;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Service;
 
 import javax.naming.NameNotFoundException;
@@ -25,27 +34,54 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     UserMapper userMapper;
-
+    @Autowired
+    MyUserDetailsServiceImpl myUserDetailsService;
     @Autowired
     AuthenticationProvider authenticationProvider;
-
     @Autowired
     JwtServiceImpl jwtService;
 
-
+    private SecurityContextRepository securityContextRepository = new HttpSessionSecurityContextRepository();
 
     @Override
-    public LoginResponse login(LoginRequest loginRequest) throws NameNotFoundException {
+    public LoginResponse login(LoginRequest loginRequest,HttpServletRequest request,HttpServletResponse response) throws NameNotFoundException, BadCredentialsException {
         String token = null;
 
-        Authentication authenticate = authenticationProvider.authenticate(UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getEmail(), loginRequest.getPassword()));
-        User user =(User) authenticate.getPrincipal();
-        String accessToken = jwtService.createAccessToken(user);
-        System.out.println(accessToken);
-        Claims claims = jwtService.extractClaims(accessToken);
-        System.out.println(claims);
+        String accessToken = null;
+        try {
+            authenticationProvider.authenticate(UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getEmail(), loginRequest.getPassword()));
 
+            User user = (User) myUserDetailsService.loadUserByUsername(loginRequest.getEmail());
+            UsernamePasswordAuthenticationToken authenticate = new UsernamePasswordAuthenticationToken(
+                    user,
+                    null,
+                    user.getAuthorities()
+            );
+            authenticate.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-        return new LoginResponse(accessToken, "null");
+            //save authentication to SecurityContextHolder
+            SecurityContext context = SecurityContextHolder.createEmptyContext();
+            context.setAuthentication(authenticate);
+            SecurityContextHolder.setContext(context);
+            /**
+             * In Spring Security 6, the default behavior is that the SecurityContextHolderFilter will only read the SecurityContext from SecurityContextRepository
+             * and populate it in the SecurityContextHolder. So if we want to save the authentication between requests, we must save the context into repository
+             */
+            securityContextRepository.saveContext(context, request, response);
+
+            // create jwt
+            accessToken = jwtService.createAccessToken(user);
+            System.out.println(accessToken);
+            Claims claims = jwtService.extractClaims(accessToken);
+            System.out.println(claims);
+        } catch (AuthenticationException e) {
+            System.out.println("帳號或密碼錯誤");
+        }
+
+        if (accessToken == null) {
+            return new LoginResponse("error", accessToken, "null");
+        }
+
+        return new LoginResponse("success", accessToken, "null");
     }
 }

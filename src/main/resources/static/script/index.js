@@ -1,4 +1,18 @@
 window.onload = function () {
+    //check if user login
+    ckLogin();
+
+    // extract token and get user ID
+    const token = localStorage.getItem("token")
+    if(token != null){
+        const jwtParts = token.split(".");
+        const userId = JSON.parse(atob(jwtParts[1])).userId;
+        localStorage.setItem("id",userId);
+        console.log(userId);
+    }
+
+
+    // load attraction information
     let vue = new Vue({
         el: ".container",
         data: {
@@ -24,32 +38,9 @@ window.onload = function () {
         }
     });
 
-    console.log(document.cookie)
+    console.log(localStorage.getItem("token"))
+
 };
 
-
-// function getAllAttraction() {
-//     let vue = new Vue({
-//         "el": ".container",
-//         "data": {},
-//         "methods": {
-//             "getAllAttraction": function () {
-//                 axios({
-//                         "method": "get",
-//                         "url": "/api/attraction",
-//                         "params": null
-//                     }
-//                 ).then(function (value) {
-//                         console.log(value.data)
-//                     }
-//                         .catch(function (reason) {
-//                                 console.log(reason)
-//                             }
-//                         )
-//                 )
-//             }
-//         }
-//     });
-// }
 
 

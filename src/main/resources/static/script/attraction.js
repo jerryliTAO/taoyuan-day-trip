@@ -1,4 +1,5 @@
 window.onload = async function () {
+    ckLogin();
     getAttractionById();
 
     // get attraction images
@@ -27,7 +28,6 @@ window.onload = async function () {
         if (index > (image.length - 1)) {
             index = 0;
         }
-        console.log(index);
         attractionImg.src = image[index];
     }
 };
