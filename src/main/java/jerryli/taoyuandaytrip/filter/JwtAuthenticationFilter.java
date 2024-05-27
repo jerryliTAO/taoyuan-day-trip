@@ -12,8 +12,11 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -33,13 +36,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     MyUserDetailsServiceImpl myUserDetailsService;
 
-
+    private SecurityContextRepository securityContextRepository = new HttpSessionSecurityContextRepository();
 
     @Override
     protected void doFilterInternal(
             @NonNull HttpServletRequest request,
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain) throws ServletException, IOException {
+
         final String authHeader = request.getHeader("Authorization");
         final String token;
         final String userEmail;
@@ -51,8 +55,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         Claims claims = jwtService.extractClaims(token);
         userEmail =(String) claims.get("email");
 
+        System.out.println(SecurityContextHolder.getContext().getAuthentication());
         // check if there's no user login
-        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
             //according email to load user information
             User user =(User) myUserDetailsService.loadUserByUsername(userEmail);
             if (jwtService.isTokenValid(token,user)) {
@@ -65,7 +70,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authToken.setDetails(
                         new WebAuthenticationDetailsSource().buildDetails(request)
                 );
-                SecurityContextHolder.getContext().setAuthentication(authToken);
+                SecurityContext context = SecurityContextHolder.createEmptyContext();
+                context.setAuthentication(authToken);
+                SecurityContextHolder.setContext(context);
+                this.securityContextRepository.saveContext(context,request,response);
             } else {
                 return;
             }

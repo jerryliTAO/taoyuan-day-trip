@@ -52,7 +52,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(
                                 "/","/index","/attraction/**",
-                                "/login" ,"/register","/order",
+                                "/api/logout" ,"/register",
                                 "/api/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form

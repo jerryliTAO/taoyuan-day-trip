@@ -6,6 +6,11 @@ body {
   color: rgb(102, 102, 102);
 }
 
+#order,
+#logout {
+  display: block;
+}
+
 hr {
   margin-bottom: 0px;
   padding-bottom: 0px;

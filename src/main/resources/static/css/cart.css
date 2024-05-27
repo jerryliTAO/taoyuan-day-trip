@@ -6,6 +6,11 @@ body {
   color: rgb(102, 102, 102);
 }
 
+#order,
+#logout {
+  display: block;
+}
+
 .section {
   display: flex;
   justify-content: center;

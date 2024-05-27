@@ -13,6 +13,7 @@
         <div id="login-title">桃園一日遊-帳號登入</div>
         <img id="loginImg" src="./images/login.png" />
       </div>
+      <div id="loginError" class="errorMsg">帳號或密碼錯誤</div>
 
       <input
         type="text"
@@ -26,17 +27,20 @@
 
       <input
         type="password"
+        id="password"
         name="password"
         class="formInput"
         placeholder="密碼"
       />
 
       <div></div>
-      <button id="loginBtm" type="submit">登入</button>
+      <button id="loginBtm" type="button" onclick="login()">登入</button>
 
-      <a id="register" href="register">建立新帳戶</a>
+      <a id="register" href="/register">建立新帳戶</a>
     </form>
 
   <script src="/script/login.js"></script>
+  <script src="/script/vue.js"></script>
+  <script src="/script/axios.min.js"></script>
   </body>
 </html>
