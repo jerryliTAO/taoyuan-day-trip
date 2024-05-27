@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0"/>
     <title>桃園一日遊-註冊</title>
-    <link rel="stylesheet" type="text/css" href="./css/register.css" />
-    <link rel="icon" href="images/trip.png" type="image/x-icon" />
-  </head>
-  <body>
-    <div id="registerForm">
-      <div id="registerTitle">註冊桃園一日遊會員</div>
-      <form action="/register" method="post" onsubmit="return verifyForm()">
+    <link rel="stylesheet" type="text/css" href="./css/register.css"/>
+    <link rel="icon" href="images/trip.png" type="image/x-icon"/>
+</head>
+<body>
+<div id="registerForm">
+    <div id="registerTitle">註冊桃園一日遊會員</div>
+    <div id="registerMsg" >此信箱已被註冊</div>
+    <form action="/register" method="post" onsubmit="return verifyForm()">
         <div class="inputItem">
-          <div>
-            <label>帳號名稱:</label>
-            <input id="account" type="text" name="account" placeholder="請輸入帳號" />
-          </div>
-          <span id="accountSpan" class="errorMsg">請輸入只少六位數且不包含特殊符號</span>
+            <div>
+                <label>電子郵件:</label>
+                <input id="email" type="text" name="email" placeholder="請輸入信箱"/>
+            </div>
+            <span id="emailSpan" class="errorMsg">請輸入正確格式</span>
         </div>
         <div class="inputItem">
-          <div>
-            <label>帳號密碼:</label>
-            <input id="password" type="password" name="password" placeholder="請輸入密碼" />
-          </div>
-          <span id="pwdSpan" class="errorMsg">請輸入6~10位數密碼，至少包含1英文、1數字</span>
+            <div>
+                <label>帳號密碼:</label>
+                <input id="password" type="password" name="password" placeholder="請輸入密碼"/>
+            </div>
+            <span id="pwdSpan" class="errorMsg">請輸入6~10位數密碼，至少包含1英文、1數字</span>
         </div>
         <div class="inputItem">
-          <div>
-            <label>確認密碼:</label>
-            <input id="confirmPassword" type="password" name="confirmPassword" placeholder="再次入密碼"
-            />
-          </div>
-          <span id="pwdCkSpan" class="errorMsg">兩次輸入密碼不匹配</span>
+            <div>
+                <label>確認密碼:</label>
+                <input id="confirmPassword" type="password" name="confirmPassword" placeholder="再次入密碼"
+                />
+            </div>
+            <span id="pwdCkSpan" class="errorMsg">兩次輸入密碼不匹配</span>
         </div>
         <div class="inputItem">
-          <div>
-            <label>電子郵件:</label>
-            <input id="email" type="text" name="email" placeholder="請輸入信箱" />
-          </div>
-          <span id="emailSpan" class="errorMsg">請輸入正確格式</span>
+            <div>
+                <label>帳號名稱:</label>
+                <input id="account" type="text" name="account" placeholder="請輸入帳號"/>
+            </div>
+            <span id="accountSpan" class="errorMsg">請輸入只少六位數且不包含特殊符號</span>
         </div>
         <div id="registerBtmDiv">
-          <button id="registerBtm" type="submit">註冊</button>
+            <button id="registerBtm" type="button" onclick="register()">註冊</button>
         </div>
-      </form>
-    </div>
-
-  <script src="/script/register.js"></script>
-  </body>
+    </form>
+</div>
+<script src="/script/vue.js"></script>
+<script src="/script/axios.min.js"></script>
+<script src="/script/register.js"></script>
+</body>
 </html>

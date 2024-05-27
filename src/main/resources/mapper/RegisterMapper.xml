@@ -10,7 +10,7 @@
     </select>
     <insert id="addUser">
         insert into user
-        values (null, #{user.account}, #{user.email}, #{user.password}, #{user.phone}, #{user.registTime})
+        values (null, #{user.account}, #{user.email}, #{user.password}, #{user.phone}, #{user.role})
     </insert>
 
 </mapper>

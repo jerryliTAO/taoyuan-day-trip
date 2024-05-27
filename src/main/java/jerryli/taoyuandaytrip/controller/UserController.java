@@ -2,9 +2,9 @@ package jerryli.taoyuandaytrip.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jerryli.taoyuandaytrip.pojo.LoginRequest;
-import jerryli.taoyuandaytrip.pojo.LoginResponse;
+import jerryli.taoyuandaytrip.pojo.*;
 import jerryli.taoyuandaytrip.service.impl.LoginServiceImpl;
+import jerryli.taoyuandaytrip.service.impl.RegisterServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,11 +35,10 @@ public class UserController {
 
     @Autowired
     LoginServiceImpl loginService;
+    @Autowired
+    RegisterServiceImpl registerService;
 
     @PostMapping("/api/login")
-
-//
-
     public ResponseEntity<LoginResponse> login( @RequestBody LoginRequest loginRequest,
                                                 HttpServletRequest request,
                                                HttpServletResponse response) throws NameNotFoundException {
@@ -53,8 +52,6 @@ public class UserController {
 //        LoginResponse login = loginService.login(loginRequest);
 
         return  ResponseEntity.ok(login);
-
-
     }
 
 
@@ -65,6 +62,17 @@ public class UserController {
         this.logoutHandler.logout(request,response,authentication);
         System.out.println(SecurityContextHolder.getContext().getAuthentication());
 
+    }
+
+    @PostMapping("/api/register")
+    public ResponseEntity<StatusResponse> register(@RequestBody RegisterRequest request){
+        User user = new User(0, request.getAccount(), request.getEmail(), request.getPassword(), null, "user");
+        int result = registerService.addUser(user);
+        if(result == 1){
+            return ResponseEntity.ok(new StatusResponse("ok"));
+        }else{
+            return ResponseEntity.ok(new StatusResponse("帳號已有人使用，請換別的帳號"));
+        }
     }
 
 
