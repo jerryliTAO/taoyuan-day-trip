@@ -60,3 +60,7 @@ input {
   text-align: left;
   padding-left: 150px;
 }
+#registerMsg{
+  color: red;
+  display: none;
+}

@@ -16,5 +16,4 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class StatusResponse {
     private String status;
-    private String token;
 }

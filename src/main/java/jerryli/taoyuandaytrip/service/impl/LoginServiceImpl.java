@@ -71,9 +71,6 @@ public class LoginServiceImpl implements LoginService {
 
             // create jwt
             accessToken = jwtService.createAccessToken(user);
-            System.out.println(accessToken);
-            Claims claims = jwtService.extractClaims(accessToken);
-            System.out.println(claims);
         } catch (AuthenticationException e) {
             System.out.println("帳號或密碼錯誤");
         }
