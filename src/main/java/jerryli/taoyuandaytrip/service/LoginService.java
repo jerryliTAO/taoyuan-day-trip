@@ -2,10 +2,8 @@ package jerryli.taoyuandaytrip.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jerryli.taoyuandaytrip.pojo.LoginRequest;
+import jerryli.taoyuandaytrip.pojo.request.LoginRequest;
 import jerryli.taoyuandaytrip.pojo.LoginResponse;
-import jerryli.taoyuandaytrip.pojo.StatusResponse;
-import org.apache.ibatis.annotations.Param;
 
 import javax.naming.NameNotFoundException;
 

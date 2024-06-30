@@ -1,4 +1,4 @@
-package jerryli.taoyuandaytrip.pojo;
+package jerryli.taoyuandaytrip.pojo.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,14 +8,12 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Jerry
- * @create 2024-05-22-下午 10:20
+ * @create 2024-05-22-下午 10:18
  */
-@Component
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-    private String account;
+public class LoginRequest {
     private String email;
     private String password;
 }

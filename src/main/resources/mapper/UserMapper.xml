@@ -4,4 +4,7 @@
     <select id="getUserByEmail" resultType="jerryli.taoyuandaytrip.pojo.User">
         select * from user where email = #{email}
     </select>
+    <select id="getUserById" resultType="jerryli.taoyuandaytrip.pojo.User">
+        select * from user where id = #{id}
+    </select>
 </mapper>

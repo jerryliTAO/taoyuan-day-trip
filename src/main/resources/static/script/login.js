@@ -28,7 +28,7 @@ async function login() {
         // login
         let response = await axios({
             method: "post",
-            url: "/api/login",
+            url: "/auth/login",
             "data": {
                 "email": email,
                 "password": password

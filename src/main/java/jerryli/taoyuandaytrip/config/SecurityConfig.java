@@ -52,8 +52,9 @@ public class SecurityConfig {
         http.authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(
                                 "/","/index","/attraction/**",
-                                "/api/logout" ,"/register",
+                                "/register","/auth/login","/auth/register",
                                 "/api/**").permitAll()
+                        .requestMatchers("/auth/logout" ).hasAuthority("user")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")

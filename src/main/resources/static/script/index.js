@@ -7,7 +7,7 @@ window.onload = function () {
     if(token != null){
         const jwtParts = token.split(".");
         const userId = JSON.parse(atob(jwtParts[1])).userId;
-        localStorage.setItem("id",userId);
+        localStorage.setItem("userId",userId);
         console.log(userId);
     }
 
