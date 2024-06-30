@@ -3,17 +3,20 @@ package jerryli.taoyuandaytrip.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 /**
  * @author Jerry
- * @create 2024-05-22-下午 10:18
+ * @create 2024-05-28-下午 10:44
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
+public class Order {
+    private Integer id;
+    private Integer userId;
+    private String name;
     private String email;
-    private String password;
+    private String phone;
+    private Integer totalPrice;
+    private String number;
 }

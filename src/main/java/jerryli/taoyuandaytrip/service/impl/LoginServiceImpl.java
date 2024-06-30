@@ -1,25 +1,21 @@
 package jerryli.taoyuandaytrip.service.impl;
 
-import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jerryli.taoyuandaytrip.mapper.UserMapper;
-import jerryli.taoyuandaytrip.pojo.LoginRequest;
+import jerryli.taoyuandaytrip.pojo.request.LoginRequest;
 import jerryli.taoyuandaytrip.pojo.LoginResponse;
 import jerryli.taoyuandaytrip.pojo.User;
 import jerryli.taoyuandaytrip.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
-import org.springframework.security.web.context.SecurityContextHolderFilter;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Service;
 

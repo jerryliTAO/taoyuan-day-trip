@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jerryli.taoyuandaytrip.mapper.CartMapper">
+
+<!--    <select id="getCartItemByUserId" resultType="jerryli.taoyuandaytrip.pojo.CartItem">-->
+<!--        select *-->
+<!--        from cart-->
+<!--        where orderId is null-->
+<!--          and userId = #{userId}-->
+<!--    </select>-->
+
+    <select id="getCartItemByUserId" resultMap="CartResultType">
+        select c.id,
+               a.id as attractionId,
+               a.`name`,
+               a.address,
+               i.image,
+               c.date,
+               c.period,
+               c.price,
+               c.orderId
+        from cart c
+                 LEFT JOIN attraction a on c.attractionId = a.id
+                 left JOIN (select attractionId, image from image GROUP BY attractionId) i ON a.id = i.attractionId
+        where c.orderId IS NULL
+          AND c.userId = #{userId};
+
+
+    </select>
+    <resultMap id="CartResultType" type="jerryli.taoyuandaytrip.pojo.CartItem">
+        <id property="id" column="id"></id>
+        <result property="date" column="date"></result>
+        <result property="period" column="period"></result>
+        <result property="price" column="price"></result>
+        <result property="orderId" column="orderId"></result>
+        <result property="image" column="image"></result>
+        <association property="attraction" javaType="jerryli.taoyuandaytrip.pojo.Attraction">
+            <id property="id" column="attractionId"></id>
+            <result property="name" column="name"></result>
+            <result property="address" column="address"></result>
+        </association>
+
+    </resultMap>
+
+    <insert id="addCartItem">
+        insert into cart
+        values (null, #{cartItem.user.id}, #{cartItem.attraction.id}, #{cartItem.date}, #{cartItem.price},
+                #{cartItem.period}, null)
+    </insert>
+
+    <update id="updateOrderId">
+        update cart
+        set orderId = #{cartItem.orderId}
+    </update>
+
+    <delete id="deleteCartItem">
+        delete
+        from cart
+        where userId = #{cartItem.userId}
+          and attraction = #{cartItem.attraction.id}
+    </delete>
+</mapper>

@@ -39,9 +39,9 @@
                     <img src="/images/btn_leftArrow.png"/>
                 </div>
                 <div class="nextBtn"><img src="/images/btn_rightArrow.png"/></div>
-                <div class="dots">
-                    <span class="dot"></span>
-                </div>
+<!--                <div class="dots">-->
+<!--                    <span class="dot"></span>-->
+<!--                </div>-->
 
                 <!--          https://travel.tycg.gov.tw/image/59874/640x480-->
                 <div id="imageContainer">
@@ -72,17 +72,17 @@
                         </div>
                         <div id="schedule">
                             <span>選擇時段 : </span>
-                            <input type="radio" name="radio" value="morning"/>
+                            <input type="radio" id="morning" name="radio" value="morning" checked/>
                             <span>上半天</span>
-                            <input type="radio" name="radio" value="afternoon"/>
+                            <input type="radio" id="afternoon" name="radio" value="afternoon"/>
                             <span>下半天</span>
                         </div>
                         <div>
                             <span>導覽費用 : 新台幣</span>
-                            <span id="fee">2000</span>
+                            <span id="price">2000</span>
                             <span>元</span>
                         </div>
-                        <input id="bookingSubmit" type="submit" value="開始預約行程"/>
+                        <input id="bookingSubmit" type="button" onclick="addCartItem()" value="開始預約行程"/>
                     </form>
                 </div>
             </div>

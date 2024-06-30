@@ -1,9 +1,6 @@
 package jerryli.taoyuandaytrip.pojo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,10 +13,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Builder
 public class Attraction {
 
-    private int id;
+    private Integer id;
     private String name;
     private String description;
     private String district;

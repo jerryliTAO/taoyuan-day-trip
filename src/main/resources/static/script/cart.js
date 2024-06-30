@@ -1,7 +1,34 @@
-window.onload = function(){
+window.onload = async function () {
     ckLogin();
-}
+    // const cart = await getCart();
+    // console.log(cart);
 
+    let vue = new Vue({
+        el:"#withPlan",
+        data:{
+            cart:{}
+        },
+        methods:{
+            getCart:function(){
+                const uid = parseInt(localStorage.getItem("userId"))
+                let result = axios({
+                    method: "get",
+                    url: "/api/cart/" + uid
+                })
+                    .then(res => {
+                        vue.cart = res.data;
+                    })
+                    .catch(err => {
+                        console.log(err.data)
+                    })
+            }
+        },
+        mounted:function (){
+            this.getCart();
+        }
+    });
+
+}
 
 
 const APP_ID = 11327
@@ -54,3 +81,18 @@ TPDirect.card.setup({
         endIndex: 11
     }
 })
+
+// async function getCart() {
+//     const uid = parseInt(localStorage.getItem("userId"))
+//
+//     let result = await axios({
+//         method: "get",
+//         url: "/api/cart/" + uid
+//     })
+//         .then(res => {
+//             console.log(res.data)
+//         })
+//         .catch(err => {
+//             console.log(err.data)
+//         })
+// }

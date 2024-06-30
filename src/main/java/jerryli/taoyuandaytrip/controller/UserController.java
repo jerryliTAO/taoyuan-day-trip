@@ -3,13 +3,14 @@ package jerryli.taoyuandaytrip.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jerryli.taoyuandaytrip.pojo.*;
+import jerryli.taoyuandaytrip.pojo.request.LoginRequest;
+import jerryli.taoyuandaytrip.pojo.request.RegisterRequest;
 import jerryli.taoyuandaytrip.service.impl.LoginServiceImpl;
 import jerryli.taoyuandaytrip.service.impl.RegisterServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +39,7 @@ public class UserController {
     @Autowired
     RegisterServiceImpl registerService;
 
-    @PostMapping("/api/login")
+    @PostMapping("/auth/login")
     public ResponseEntity<LoginResponse> login( @RequestBody LoginRequest loginRequest,
                                                 HttpServletRequest request,
                                                HttpServletResponse response) throws NameNotFoundException {
@@ -57,14 +58,13 @@ public class UserController {
 
 
     private SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
-    @GetMapping("/api/logout")
+    @GetMapping("/auth/logout")
     public void logout(Authentication authentication, HttpServletRequest request, HttpServletResponse response){
         this.logoutHandler.logout(request,response,authentication);
         System.out.println(SecurityContextHolder.getContext().getAuthentication());
-
     }
 
-    @PostMapping("/api/register")
+    @PostMapping("/auth/register")
     public ResponseEntity<StatusResponse> register(@RequestBody RegisterRequest request){
         User user = new User(0, request.getAccount(), request.getEmail(), request.getPassword(), null, "user");
         int result = registerService.addUser(user);

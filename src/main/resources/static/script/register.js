@@ -16,7 +16,7 @@ async function register() {
         // register the account
         let result = await axios({
             method: "post",
-            url: "/api/register",
+            url: "/auth/register",
             "data": {
                 "account": account.value,
                 "email": email.value,
@@ -34,7 +34,7 @@ async function register() {
             //after register success, auto login
             let response = await axios({
                 method: "post",
-                url: "/api/login",
+                url: "/auth/login",
                 "data": {
                     "email": email.value,
                     "password": password.value

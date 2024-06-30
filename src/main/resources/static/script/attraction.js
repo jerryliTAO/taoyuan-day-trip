@@ -1,7 +1,7 @@
 window.onload = async function () {
     ckLogin();
     getAttractionById();
-
+    optionChangePrice();
     // get attraction images
     const image = await images();
 
@@ -30,6 +30,8 @@ window.onload = async function () {
         }
         attractionImg.src = image[index];
     }
+
+
 };
 
 
@@ -87,6 +89,72 @@ if (month < 10) {
 if (day < 10) {
     day = "0" + day;
 }
-
 let time = year + "-" + month + "-" + day;
 inputDate.setAttribute("min", time);
+
+
+//====== Option change price between morning and afternoon =======
+function optionChangePrice() {
+    const morning = document.querySelector("#morning")
+    const afternoon = document.querySelector("#afternoon")
+    const price = document.querySelector("#price")
+    morning.addEventListener("click", function () {
+        price.innerText = "2000";
+    })
+    afternoon.addEventListener("click", function () {
+        price.innerText = "2500";
+    })
+}
+
+async function addCartItem() {
+
+    //========   get the information of reservation
+    const date = document.querySelector("#inputDate").value;
+    if(date == ""){
+        alert("請選擇日期");
+        return
+    }
+    let period;
+    const morning = document.querySelector("#morning");
+    if (morning.checked) {
+        period = "morning";
+    } else {
+        period = "afternoon";
+    }
+    const price = parseInt(document.querySelector("#price").innerText);
+    const userId = localStorage.getItem("userId");
+    let uri = location.pathname.split("/");
+    const attractionId = parseInt(uri[2]);
+    let test = "Bearer " + localStorage.getItem("token");
+
+
+    // post data to backend server
+    let response = await axios({
+        method: "post",
+        url: "/api/cartItem",
+        "data": {
+            "userId": userId,
+            "attractionId": attractionId,
+            "dateTime": date,
+            "price": price,
+            "period": period
+        }
+        // },
+        // headers:{
+        //     "Content-type":"application/json",
+        //     "Authorization":"Bearer " + localStorage.getItem("token")
+        // }
+    }).then(res=>{
+        return res.data;
+    }).catch(error=>{
+        alert(error);
+        return;
+    })
+
+    if(response.status == "success"){
+        location.href = "/cart";
+    }else{
+        alert("預約行程失敗失敗");
+    }
+
+}

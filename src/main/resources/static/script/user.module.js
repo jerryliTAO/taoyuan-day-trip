@@ -10,8 +10,10 @@ function ckLogin(){
         logout.style.display="block";
 
 
-        login.style.display="none";
-        register.style.display="none";
+        if(login != null && register != null){
+            login.style.display="none";
+            register.style.display="none";
+        }
     }
 }
 
@@ -19,7 +21,7 @@ async function logout(){
     localStorage.clear();
     await axios({
         method: "get",
-        url:"/api/logout"
+        url:"/auth/logout"
     })
 
     location.href="/";
