@@ -45,10 +45,10 @@
                 />
               </div>
               <div id="bookingList">
-                <a id="attractionName" v-bind:href="'/attraction/' + cartItem.attraction.id">{{cartItem.attraction.name}}</a>
+                <a id="attractionName" v-bind:href="'/attraction/' + cartItem.attraction.id" v-cloak>{{cartItem.attraction.name}}</a>
                 <div class="attractionInfo">
                   日期:
-                  <div id="date">{{cartItem.date}}</div>
+                  <div id="date" v-cloak>{{cartItem.date}}</div>
                 </div>
                 <div class="attractionInfo">
                   時段 :
@@ -57,15 +57,15 @@
                 </div>
                 <div class="attractionInfo">
                   費用 :
-                  <div id="fee">新台幣<span>{{cartItem.price}}</span>元</div>
+                  <div id="fee">新台幣<span v-cloak>{{cartItem.price}}</span>元</div>
                 </div>
                 <div class="attractionInfo">
                   地址 :
-                  <div id="address">{{cartItem.attraction.address}}</div>
+                  <div id="address" v-cloak>{{cartItem.attraction.address}}</div>
                 </div>
               </div>
               <div id="bookingDelete">
-                <img id="deleteIcon" src="./images/icon_delete.png" />
+                <img id="deleteIcon" src="./images/icon_delete.png" v-on:click="deleteCartItem(cartItem.id)"/>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
           </div>
           <hr />
           <div id="summary">
-            <div id="totalPrice">總額:新台幣<span>{{cart.totalPrice}}</span>元</div>
+            <div id="totalPrice">總額:新台幣<span v-cloak>{{cart.totalPrice}}</span>元</div>
             <div id="pay">確認訂購並付款</div>
           </div>
         </div>

@@ -16,7 +16,7 @@ public interface CartService {
 
     public int addCartItem(CartItem cart);
 
-    public int deleteCartItem(CartItem cart);
+    public int deleteCartItem(Integer cartItemId);
 
     public Cart getCart(Integer userId);
 

@@ -1,8 +1,20 @@
 window.onload = async function () {
     ckLogin();
-    getAttractionById();
+    // getAttractionById();
+
+    let result = await getAttractionById();
+    let vue = new Vue({
+        el: ".container",
+        data: {
+            attraction: result
+        }
+    });
+    initMap(result.latitude,result.longitude);
+
+
     optionChangePrice();
     // get attraction images
+
     const image = await images();
 
 
@@ -34,33 +46,21 @@ window.onload = async function () {
 
 };
 
-
-let getAttractionById = function () {
-    let vue = new Vue({
-        el: ".container",
-        data: {
-            attraction: {}
-        },
-        methods: {
-            getAttractionById: function () {
-                axios({
-                        "method": "GET",
-                        "url": "/api" + location.pathname
-                    }
-                ).then((value) => {
-                    vue.attraction = value.data;
-                }).catch((reason) => {
-                    console.log(reason)
-                })
-            }
-        },
-        mounted: function () {
-            this.getAttractionById();
+//==========   Get Attraction function ============
+let getAttractionById =async function () {
+    let attraction =await axios({
+            "method": "GET",
+            "url": "/api" + location.pathname
         }
-
-    });
+    ).then((value) => {
+        return value.data;
+    }).catch((reason) => {
+        console.log(reason)
+    })
+    return attraction;
 };
 
+//==========   Get Image ============
 async function images() {
     const images = await axios({
             "method": "GET",
@@ -110,7 +110,7 @@ async function addCartItem() {
 
     //========   get the information of reservation
     const date = document.querySelector("#inputDate").value;
-    if(date == ""){
+    if (date == "") {
         alert("請選擇日期");
         return
     }
@@ -127,34 +127,74 @@ async function addCartItem() {
     const attractionId = parseInt(uri[2]);
     let test = "Bearer " + localStorage.getItem("token");
 
+    if (userId == null) {
+        alert("請登入後再預約行程")
+        location.href = "/login"
+    } else {
+        // post data to backend server
+        let response = await axios({
+            method: "post",
+            url: "/api/cart",
+            "data": {
+                "userId": userId,
+                "attractionId": attractionId,
+                "dateTime": date,
+                "price": price,
+                "period": period
+            }
+            // },
+            // headers:{
+            //     "Content-type":"application/json",
+            //     "Authorization":"Bearer " + localStorage.getItem("token")
+            // }
+        }).then(res => {
+            return res.data;
+        }).catch(error => {
+            alert(error);
+            return;
+        })
 
-    // post data to backend server
-    let response = await axios({
-        method: "post",
-        url: "/api/cartItem",
-        "data": {
-            "userId": userId,
-            "attractionId": attractionId,
-            "dateTime": date,
-            "price": price,
-            "period": period
+        if (response.status == "success") {
+            location.href = "/cart";
+        } else {
+            alert("預約行程失敗");
         }
-        // },
-        // headers:{
-        //     "Content-type":"application/json",
-        //     "Authorization":"Bearer " + localStorage.getItem("token")
-        // }
-    }).then(res=>{
-        return res.data;
-    }).catch(error=>{
-        alert(error);
-        return;
-    })
-
-    if(response.status == "success"){
-        location.href = "/cart";
-    }else{
-        alert("預約行程失敗失敗");
     }
-
 }
+
+
+//====== Google Map Api =======
+let map;
+
+async function initMap(Lat, Lng) {
+    const {Map} = await google.maps.importLibrary("maps");
+    const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
+    const location = {lat:Lat,lng:Lng};
+
+    map = new Map(document.getElementById("map"), {
+        center: location,
+        zoom: 14,
+        mapId: "ATTRACTION_MAP_ID",
+    });
+
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+        position: location,
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP
+    });
+    marker.addListener("click", toggleBounce);
+}
+
+function toggleBounce() {
+    if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+    } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+}
+
+
+window.initMap = initMap;
+
+
