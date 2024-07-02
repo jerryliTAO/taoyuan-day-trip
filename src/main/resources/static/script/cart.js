@@ -1,15 +1,13 @@
 window.onload = async function () {
     ckLogin();
-    // const cart = await getCart();
-    // console.log(cart);
 
     let vue = new Vue({
-        el:"#withPlan",
-        data:{
-            cart:{}
+        el: "#withPlan",
+        data: {
+            cart: {}
         },
-        methods:{
-            getCart:function(){
+        methods: {
+            getCart: function () {
                 const uid = parseInt(localStorage.getItem("userId"))
                 let result = axios({
                     method: "get",
@@ -21,9 +19,31 @@ window.onload = async function () {
                     .catch(err => {
                         console.log(err.data)
                     })
+            },
+
+            deleteCartItem: async function (cartItemId) {
+                let response = await axios({
+                    method: "delete",
+                    url: "/api/cart/" + cartItemId
+                })
+                    .then(res => {
+                        console.log(res.data)
+                        return res.data;
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+
+                if(response.status == "success"){
+                    // location.reload()
+                    vue.getCart();
+                }else{
+                    alert("購物車刪除項目失敗")
+                }
+
             }
         },
-        mounted:function (){
+        mounted: function () {
             this.getCart();
         }
     });
@@ -82,17 +102,16 @@ TPDirect.card.setup({
     }
 })
 
-// async function getCart() {
-//     const uid = parseInt(localStorage.getItem("userId"))
-//
-//     let result = await axios({
-//         method: "get",
-//         url: "/api/cart/" + uid
-//     })
-//         .then(res => {
-//             console.log(res.data)
-//         })
-//         .catch(err => {
-//             console.log(err.data)
-//         })
-// }
+
+function deleteCartItem(cartItemId) {
+    axios({
+        method: "delete",
+        url: "/api/cart/" + cartItemId
+    })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}

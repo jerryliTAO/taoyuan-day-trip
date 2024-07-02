@@ -56,7 +56,6 @@
     <delete id="deleteCartItem">
         delete
         from cart
-        where userId = #{cartItem.userId}
-          and attraction = #{cartItem.attraction.id}
+        where id = #{cartItemId}
     </delete>
 </mapper>

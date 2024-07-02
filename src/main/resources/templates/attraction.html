@@ -8,8 +8,11 @@
     <link rel="stylesheet" type="text/css" href="/css/components/header.css"/>
     <link rel="stylesheet" type="text/css" href="/css/components/footer.css"/>
     <link rel="stylesheet" type="text/css" href="/css/attraction.css"/>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi9NEFzaOmnjE0lv6Jt0N_0i9VMW3pL64&callback=initMap"></script>
 </head>
 <body>
+
 
 <header>
     <a id="title" href="/">桃園一日遊</a>
@@ -30,7 +33,6 @@
     </div>
 </header>
 <div class="empty-content"></div>
-
 <div class="container">
     <main>
         <div class="section">
@@ -89,7 +91,6 @@
         </div>
         <hr/>
     </main>
-
     <article>
         <div id="infoContainer">
             <div id="introduce">
@@ -107,10 +108,12 @@
                     <span>{{attraction.openTime}}</span>
                 </div>
             </div>
-            <div id="mapContainer">
-                <div id="map">123</div>
-            </div>
+        </div>
     </article>
+    <div id="mapContainer">
+        <div id="map">123</div>
+    </div>
+<!--    <div id="test"></div>-->
 </div>
 <footer>COPYRIGHT © 2024 桃園一日遊</footer>
 

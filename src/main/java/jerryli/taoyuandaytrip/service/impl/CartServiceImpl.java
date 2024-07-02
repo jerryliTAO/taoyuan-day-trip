@@ -42,8 +42,8 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public int deleteCartItem(CartItem cartItem) {
-        return cartMapper.deleteCartItem(cartItem);
+    public int deleteCartItem(Integer cartItemId) {
+        return cartMapper.deleteCartItem(cartItemId);
     }
 
     @Override

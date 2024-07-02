@@ -29,7 +29,7 @@ public class CartController {
 
 
 
-    @PostMapping("/api/cartItem")
+    @PostMapping("/api/cart")
     public ResponseEntity<StatusResponse> addCartItem(@RequestBody CartItemRequest cartItemRequest) {
         Attraction attraction = Attraction.builder().id(cartItemRequest.getAttractionId()).build();
         User user = User.builder().id(cartItemRequest.getUserId()).build();
@@ -43,6 +43,16 @@ public class CartController {
                 .build();
 
         int result = cartService.addCartItem(cartItem);
+        if(result == 1){
+            return ResponseEntity.ok(new StatusResponse("success"));
+        }else{
+            return ResponseEntity.ok(new StatusResponse("error"));
+        }
+    }
+
+    @DeleteMapping("/api/cart/{cartItemId}")
+    public ResponseEntity<StatusResponse> deleteCartItem(@PathVariable("cartItemId")Integer cartItemId){
+        int result = cartService.deleteCartItem(cartItemId);
         if(result == 1){
             return ResponseEntity.ok(new StatusResponse("success"));
         }else{
