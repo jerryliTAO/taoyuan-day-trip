@@ -44,13 +44,7 @@ public class UserController {
                                                 HttpServletRequest request,
                                                HttpServletResponse response) throws NameNotFoundException {
 
-//    public ResponseEntity<LoginResponse> login(@Param("email") String email,
-//                                               @Param("password") String password
-//                                               ) throws NameNotFoundException {
-//        LoginRequest loginRequest = new LoginRequest(email, password);
-
         LoginResponse login = loginService.login(loginRequest,request,response);
-//        LoginResponse login = loginService.login(loginRequest);
 
         return  ResponseEntity.ok(login);
     }

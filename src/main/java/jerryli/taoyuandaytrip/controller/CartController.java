@@ -2,7 +2,7 @@ package jerryli.taoyuandaytrip.controller;
 
 import jerryli.taoyuandaytrip.pojo.*;
 import jerryli.taoyuandaytrip.pojo.request.CartItemRequest;
-import jerryli.taoyuandaytrip.pojo.request.CartRequest;
+import jerryli.taoyuandaytrip.service.CartService;
 import jerryli.taoyuandaytrip.service.impl.CartServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Transactional
 public class CartController {
     @Autowired
-    CartServiceImpl cartService;
+    private CartService cartService;
 
 
     @GetMapping ("/api/cart/{uid}")
@@ -59,5 +59,4 @@ public class CartController {
             return ResponseEntity.ok(new StatusResponse("error"));
         }
     }
-
 }

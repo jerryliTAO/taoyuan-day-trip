@@ -21,10 +21,12 @@ public class CartItem {
     private Integer price;
     private String period;
     private Integer orderId;
-//    private Integer attractionId;
-//    private Integer userId;
     private String image;
 
     private Attraction attraction;
     private User user;
+
+    // for getting history order use
+    private String attractionName;
+    private String attractionAddress;
 }

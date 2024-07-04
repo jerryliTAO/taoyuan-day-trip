@@ -22,13 +22,13 @@ import java.util.List;
 public class AttractionController {
 
     @Autowired
-    AttractionService attractionService;
+    private AttractionService attractionService;
 
     @Autowired
-    ClassMapper classMapper;
+    private ClassMapper classMapper;
 
     @Autowired
-    ImageMapper imageMapper;
+    private ImageMapper imageMapper;
 
     @GetMapping("/api/attraction")
     public List<Attraction> getAllAttraction(){

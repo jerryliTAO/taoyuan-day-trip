@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jerryli.taoyuandaytrip.mapper.OrderMapper">
+    <insert id="addOrder" parameterType="jerryli.taoyuandaytrip.pojo.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into `order`
+        values (null, #{newOrder.userId}, #{newOrder.name}, #{newOrder.email}, #{newOrder.phone},
+                #{newOrder.totalPrice}, #{newOrder.number}, #{newOrder.orderTime})
+    </insert>
+    <select id="getHistoryOrderByUserId" resultMap="getHistoryOrder">
+        select o.*, cart.*
+        from `order` o
+                 LEFT JOIN(select c.id     as cartId,
+                                  a.id     as attractionId,
+                                  a.`name` as attractionName,
+                                  a.address,
+                                  i.image,
+                                  c.date,
+                                  c.period,
+                                  c.price,
+                                  c.orderId
+                           from cart c
+                                    LEFT JOIN attraction a on c.attractionId = a.id
+                                    left JOIN (select attractionId, image from image GROUP BY attractionId) i
+                                              ON a.id = i.attractionId
+                           where c.userId = #{userId}) cart on o.id = cart.orderId where o.userId=#{userId};
+    </select>
+
+
+    <resultMap id="getHistoryOrder" type="jerryli.taoyuandaytrip.pojo.Order">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="email" column="email"></result>
+        <result property="phone" column="phone"></result>
+        <result property="totalPrice" column="totalPrice"></result>
+        <result property="number" column="number"></result>
+        <result property="orderTime" column="orderTime"></result>
+        <collection property="orderItem" ofType="jerryli.taoyuandaytrip.pojo.CartItem">
+            <result property="image" column="image"></result>
+            <result property="date" column="date"></result>
+            <result property="period" column="period"></result>
+            <result property="price" column="price"></result>
+            <result property="attractionName" column="attractionName"></result>
+            <result property="attractionAddress" column="address"></result>
+            <result property="image" column="image"></result>
+            <result property="date" column="date"></result>
+            <result property="period" column="period"></result>
+            <result property="price" column="price"></result>
+        </collection>
+    </resultMap>
+
+</mapper>
