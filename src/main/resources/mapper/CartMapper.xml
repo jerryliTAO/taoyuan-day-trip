@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="jerryli.taoyuandaytrip.mapper.CartMapper">
 
-<!--    <select id="getCartItemByUserId" resultType="jerryli.taoyuandaytrip.pojo.CartItem">-->
-<!--        select *-->
-<!--        from cart-->
-<!--        where orderId is null-->
-<!--          and userId = #{userId}-->
-<!--    </select>-->
+    <!--    <select id="getCartItemByUserId" resultType="jerryli.taoyuandaytrip.pojo.CartItem">-->
+    <!--        select *-->
+    <!--        from cart-->
+    <!--        where orderId is null-->
+    <!--          and userId = #{userId}-->
+    <!--    </select>-->
 
     <select id="getCartItemByUserId" resultMap="CartResultType">
         select c.id,
@@ -50,7 +50,8 @@
 
     <update id="updateOrderId">
         update cart
-        set orderId = #{cartItem.orderId}
+        set orderId = #{orderId}
+        where userId = #{userId} AND orderId IS NULL
     </update>
 
     <delete id="deleteCartItem">

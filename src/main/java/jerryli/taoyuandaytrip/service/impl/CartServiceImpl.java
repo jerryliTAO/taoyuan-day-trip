@@ -56,4 +56,9 @@ public class CartServiceImpl implements CartService {
         User user = userMapper.getUserById(userId);
         return new Cart(user, this.totalPrice, cartItemList);
     }
+
+    @Override
+    public int updateOrderNumber(Integer userId, Integer orderId) {
+        return cartMapper.updateOrderId(userId,orderId);
+    }
 }

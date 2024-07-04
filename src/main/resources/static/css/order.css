@@ -39,8 +39,10 @@ hr {
 li {
   list-style: none;
 }
-
-.orderInfoTitle {
+#withoutOrder{
+  display: none;
+}
+.orderInfoTitle, #withoutOrder {
   font-size: 28px;
   text-align: center;
   margin-bottom: 20px;

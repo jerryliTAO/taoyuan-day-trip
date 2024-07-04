@@ -14,7 +14,8 @@ public interface CartMapper {
 
     public int addCartItem(@Param("cartItem") CartItem cartItem);
 
-    public int updateOrderId(@Param("cartItem") CartItem cartItem);
+    public int updateOrderId(@Param("userId") Integer uid,
+                             @Param("orderId") Integer orderId);
 
     public int deleteCartItem(@Param("cartItemId") Integer cartItemId);
 }

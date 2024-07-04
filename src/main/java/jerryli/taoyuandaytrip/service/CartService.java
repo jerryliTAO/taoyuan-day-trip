@@ -20,4 +20,6 @@ public interface CartService {
 
     public Cart getCart(Integer userId);
 
+    public int updateOrderNumber(Integer userId,Integer orderId);
+
 }
