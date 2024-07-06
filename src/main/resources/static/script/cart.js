@@ -30,15 +30,11 @@ window.onload = async function () {
 
                     if (response.status == "success") {
                         // location.reload()
-                        vue.cart = getCart();
+                        vue.cart = await getCart();
                     } else {
                         alert("購物車刪除項目失敗")
                     }
-
                 }
-            },
-            mounted: function () {
-                getCart();
             }
         });
     }
