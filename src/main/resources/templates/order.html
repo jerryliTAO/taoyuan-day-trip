@@ -42,6 +42,7 @@
           <div v-on:click="toggleMenu(index)" class="order">
             <div class="orderNumber">訂單編號：<span>{{order.number}}</span></div>
             <div class="expand" v-bind:id="'expand_' + index">+</div>
+            <div class="expand" v-bind:id="'hide_' + index" style="display: none">-</div>
           </div>
           <div v-bind:id="'testMenu_' + index" class="hide">
             <div class="orderInfo">
@@ -94,7 +95,7 @@
 
 
 
-    <script src="/script/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="/script/axios.min.js"></script>
     <script src="/script/order.js"></script>
     <script src="/script/user.module.js"></script>
