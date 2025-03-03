@@ -267,4 +267,25 @@ article {
   #mapContainer {
     height: 200px;
   }
+
+
+
+  /* header */
+  #title {
+    color: rgb(37, 99, 187);
+    font-size: 20px;
+  }
+
+  #order,
+  #plan,
+  #login,
+  #register,
+  #logout {
+    width: auto;
+  }
+
+  #register,
+  #logout{
+    margin-right: 20px;
+  }
 }
