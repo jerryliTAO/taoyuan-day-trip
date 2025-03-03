@@ -22,10 +22,10 @@ window.onload = async function () {
                     if (menu.style.display == "none" || menu.style.display == "") {
                         menu.style.display = "block";
                         expend.style.display = "none";
-                        hide.style.display = "block";
+                        hide.style.display = "flex";
                     } else {
                         menu.style.display = "none";
-                        expend.style.display = "block";
+                        expend.style.display = "flex";
                         hide.style.display = "none";
                     }
                 }

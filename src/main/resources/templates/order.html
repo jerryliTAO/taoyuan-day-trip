@@ -35,8 +35,8 @@
         <div class="orderContainer" v-for="(order,index) in historyOrder">
           <div v-on:click="toggleMenu(index)" class="order">
             <div class="orderNumber">訂單編號：<span>{{order.number}}</span></div>
-            <div class="expand" v-bind:id="'expand_' + index">+</div>
-            <div class="expand" v-bind:id="'hide_' + index" style="display: none">-</div>
+            <div class="expand" v-bind:id="'expand_' + index"><div>+</div></div>
+            <div class="expand" v-bind:id="'hide_' + index" style="display: none"><div>-</div></div>
           </div>
           <div v-bind:id="'testMenu_' + index" class="hide">
             <div class="orderInfo">
@@ -73,7 +73,7 @@
                     <div id="fee">新台幣<span>{{orderItem.price}}</span>元</div>
                   </div>
                   <div class="attractionInfo">
-                    地址：
+                    <div id="address_title">地址：</div>
                     <div id="address">{{orderItem.attractionAddress}}</div>
                   </div>
                 </div>

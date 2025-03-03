@@ -87,9 +87,14 @@ li {
 }
 .attractionInfo {
   display: flex;
-  align-items: center;
+  align-items: start;
   margin-bottom: 20px;
 }
+#address_title{
+  width: 50px;
+  flex-shrink: 0;
+}
+
 
 .hide {
   display: none;
@@ -130,6 +135,10 @@ li {
   padding-right: 10px;
   font-weight: bold;
   color: rgb(37, 99, 187);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .orderInfo {
@@ -137,6 +146,24 @@ li {
 }
 
 @media (max-width: 700px) {
+
+  .bookingAttraction {
+    display: block;
+  }
+  #bookingImg {
+    width: auto;
+  }
+  #bookingList {
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+  .attractionInfo {
+    margin-bottom: 10px;
+  }
+
   /* header */
   #title {
     color: rgb(37, 99, 187);
