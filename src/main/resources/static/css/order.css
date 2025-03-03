@@ -116,6 +116,11 @@ li {
   color: rgb(37, 99, 187);
   font-size: 24px;
 }
+
+.order:hover{
+  cursor : pointer;
+}
+
 .orderNumber {
   flex: auto;
   /* text-align: center; */

@@ -16,10 +16,17 @@ window.onload = async function () {
                 toggleMenu: function (number) {
                     // toggle the order detail
                     let menu = document.querySelector("#testMenu_" + number);
+                    let expend = document.querySelector("#expand_" + number);
+                    let hide = document.querySelector("#hide_" + number);
+
                     if (menu.style.display == "none" || menu.style.display == "") {
                         menu.style.display = "block";
+                        expend.style.display = "none";
+                        hide.style.display = "block";
                     } else {
                         menu.style.display = "none";
+                        expend.style.display = "block";
+                        hide.style.display = "none";
                     }
                 }
             }
