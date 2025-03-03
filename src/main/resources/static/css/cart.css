@@ -192,6 +192,13 @@ hr {
         margin-left: 10px;
     }
 
+    #summary div {
+        margin-right: 0;
+        margin-top: 10px;
+        width: 70%;
+        text-align: center;
+    }
+
     /* header */
     #title {
         color: rgb(37, 99, 187);
