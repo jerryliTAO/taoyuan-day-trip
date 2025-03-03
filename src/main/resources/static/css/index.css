@@ -166,10 +166,23 @@ footer {
     padding-right: 20px;
   }
 
-  #menu {
-    display: none;
+
+  /* header */
+  #title {
+    color: rgb(37, 99, 187);
+    font-size: 20px;
   }
-  #menuMobile {
-    display: block;
+
+  #order,
+  #plan,
+  #login,
+  #register,
+  #logout {
+    width: auto;
+  }
+
+  #register,
+  #logout{
+    margin-right: 20px;
   }
 }

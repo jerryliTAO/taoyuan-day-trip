@@ -165,3 +165,25 @@ hr {
     border-radius: 5px;
     padding-left: 10px;
 }
+
+
+@media (max-width: 700px) {
+    /* header */
+    #title {
+        color: rgb(37, 99, 187);
+        font-size: 20px;
+    }
+
+    #order,
+    #plan,
+    #login,
+    #register,
+    #logout {
+        width: auto;
+    }
+
+    #register,
+    #logout{
+        margin-right: 20px;
+    }
+}
