@@ -66,9 +66,10 @@ body {
   object-position: center;
 }
 
-#imageContainer{
+#imageContainer,.fade{
   animation: fadeInAnimation 1s;
 }
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;

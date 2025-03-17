@@ -9,7 +9,7 @@ window.onload = async function () {
             attraction: result
         }
     });
-    initMap(result.latitude,result.longitude);
+    initMap(result.latitude, result.longitude);
 
 
     optionChangePrice();
@@ -23,6 +23,7 @@ window.onload = async function () {
     let index = 0;
     let attractionImg = document.querySelector(".attractionImg");
 
+
     // previous page
     let prevBtn = document.querySelector(".prevBtn");
     prevBtn.onclick = () => {
@@ -30,7 +31,10 @@ window.onload = async function () {
         if (index < 0) {
             index = image.length - 1;
         }
+        attractionImg.classList.remove("fade");
         attractionImg.src = image[index];
+        attractionImg.onload = () => attractionImg.classList.add("fade");
+
     }
     // next page
 
@@ -40,15 +44,17 @@ window.onload = async function () {
         if (index > (image.length - 1)) {
             index = 0;
         }
+        attractionImg.classList.remove("fade");
         attractionImg.src = image[index];
+        attractionImg.onload = () => attractionImg.classList.add("fade");
     }
 
 
 };
 
 //==========   Get Attraction function ============
-let getAttractionById =async function () {
-    let attraction =await axios({
+let getAttractionById = async function () {
+    let attraction = await axios({
             "method": "GET",
             "url": "/api" + location.pathname
         }
@@ -169,7 +175,7 @@ let map;
 async function initMap(Lat, Lng) {
     const {Map} = await google.maps.importLibrary("maps");
     const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
-    const location = {lat:Lat,lng:Lng};
+    const location = {lat: Lat, lng: Lng};
 
     map = new Map(document.getElementById("map"), {
         center: location,

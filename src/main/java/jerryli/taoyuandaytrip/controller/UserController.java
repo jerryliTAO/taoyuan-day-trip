@@ -1,5 +1,8 @@
 package jerryli.taoyuandaytrip.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jerryli.taoyuandaytrip.pojo.*;
@@ -25,10 +28,12 @@ import javax.naming.NameNotFoundException;
  * @create 2024-05-22-下午 06:18
  */
 
+@Tag(name="User")
 @RestController
 public class UserController {
 
     private final AuthenticationManager authenticationManager;
+
 
     public UserController(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -39,6 +44,7 @@ public class UserController {
     @Autowired
     RegisterServiceImpl registerService;
 
+    @Operation(summary = "User login")
     @PostMapping("/auth/login")
     public ResponseEntity<LoginResponse> login( @RequestBody LoginRequest loginRequest,
                                                 HttpServletRequest request,
@@ -52,12 +58,14 @@ public class UserController {
 
 
     private SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+    @Operation(summary = "User logout")
     @GetMapping("/auth/logout")
     public void logout(Authentication authentication, HttpServletRequest request, HttpServletResponse response){
         this.logoutHandler.logout(request,response,authentication);
         System.out.println(SecurityContextHolder.getContext().getAuthentication());
     }
 
+    @Operation(summary = "Register a new account")
     @PostMapping("/auth/register")
     public ResponseEntity<StatusResponse> register(@RequestBody RegisterRequest request){
         User user = new User(0, request.getAccount(), request.getEmail(), request.getPassword(), null, "user");
