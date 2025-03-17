@@ -1,5 +1,7 @@
 package jerryli.taoyuandaytrip.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jerryli.taoyuandaytrip.pojo.Order;
 import jerryli.taoyuandaytrip.pojo.StatusResponse;
 import jerryli.taoyuandaytrip.pojo.request.OrderRequest;
@@ -14,12 +16,14 @@ import java.util.List;
  * @author Jerry
  * @create 2024-07-03-下午 03:07
  */
+@Tag(name="Order")
 @RestController
 public class OrderController {
 
     @Autowired
     private OrderService orderService;
 
+    @Operation(summary = "Checkout the order")
     @PostMapping("/api/order")
     public ResponseEntity<StatusResponse> addOrder(@RequestBody OrderRequest orderRequest){
         String result = orderService.addOrder(orderRequest);
@@ -32,7 +36,7 @@ public class OrderController {
         return ResponseEntity.ok(statusResponse);
     }
 
-
+    @Operation(summary = "Get history order by user ID")
     @GetMapping("/api/order/{userId}")
     public List<Order> getHistoryOrder(@PathVariable("userId") Integer userId){
         List<Order> historyOrder = orderService.getHistoryOrder(userId);

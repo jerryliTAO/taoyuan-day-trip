@@ -54,7 +54,9 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/","/index","/attraction/**",
                                 "/register","/auth/login","/auth/register",
-                                "/api/**").permitAll()
+                                "/api/**","/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/user/login").permitAll()
                         .requestMatchers("/auth/logout" ).hasAuthority("user")
                         .anyRequest().authenticated())
                 .formLogin(form -> form

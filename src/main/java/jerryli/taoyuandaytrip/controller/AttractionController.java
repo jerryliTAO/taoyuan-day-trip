@@ -1,5 +1,7 @@
 package jerryli.taoyuandaytrip.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jerryli.taoyuandaytrip.mapper.AttractionMapper;
 import jerryli.taoyuandaytrip.mapper.ClassMapper;
 import jerryli.taoyuandaytrip.mapper.ImageMapper;
@@ -18,6 +20,7 @@ import java.util.List;
  * @author Jerry
  * @create 2024-05-17-下午 04:58
  */
+@Tag(name="Attraction")
 @RestController
 public class AttractionController {
 
@@ -30,12 +33,14 @@ public class AttractionController {
     @Autowired
     private ImageMapper imageMapper;
 
+    @Operation(summary = "Get all attractions")
     @GetMapping("/api/attraction")
     public List<Attraction> getAllAttraction(){
         List<Attraction> allAttraction = attractionService.getAllAttraction();
         return allAttraction;
     }
 
+    @Operation(summary = "Get the attraction info by ID")
     @GetMapping("/api/attraction/{id}")
     public Attraction getAttractionById(@PathVariable("id") Integer id){
 
@@ -43,12 +48,14 @@ public class AttractionController {
         return attraction;
     }
 
+    @Operation(summary = "Get the class of the attraction")
     @GetMapping("/api/class/{id}")
     public Object getClassById(@PathVariable("id") Integer id){
 
         Object classById = classMapper.getClassById(id);
         return classById;
     }
+    @Operation(summary = "Get all images of the attraction")
     @GetMapping("/api/image/{id}")
     public Object getImageById(@PathVariable("id") Integer id){
 

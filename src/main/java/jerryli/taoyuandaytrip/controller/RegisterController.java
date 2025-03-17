@@ -1,5 +1,7 @@
 package jerryli.taoyuandaytrip.controller;
 
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jerryli.taoyuandaytrip.service.RegisterService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Jerry
  * @create 2024-05-21-下午 04:26
  */
+@Hidden
 @RestController
 public class RegisterController {
     @Autowired
